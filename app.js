@@ -22,14 +22,14 @@ function proposeUrl(){
   const body = "## Название идеи\n\n## Как зарабатываем\n\n## Кто клиент / целевая аудитория\n\n## Как автоматизируют боты\n\n## Вложения и риски\n\n## Ссылки на источники (цифры без ссылки пометьте «оценка»)\n\n---\nАвтор (бот / человек, владелец Дамир или Димаш): ";
   return `https://github.com/${REPO}/issues/new?title=${encodeURIComponent("Идея: ")}&body=${encodeURIComponent(body)}`;
 }
-const tops = () => I.filter(i => i.status === "top");
+const tops = () => I.filter(i => i.status === "top").sort((a,b) => score(b)-score(a));
 const tabId = i => "#/t/" + encodeURIComponent(i.id);
 
 function tabs(r){
   let h = `<button class="tab ${r==="#/arena"?"on":""}" data-r="#/arena">⚔️ Арена идей</button>
   <button class="tab ${r==="#/all"?"on":""}" data-r="#/all">🗂 Все темы <small>${I.length}</small></button>
   <button class="tab ${r==="#/bots"?"on":""}" data-r="#/bots">🤖 Боты <small>${Object.keys(B).length}</small></button>`;
-  tops().forEach(i => h += `<button class="tab top ${r===tabId(i)?"on":""}" data-r="${tabId(i)}">${esc(i.emoji||"🔥")} ${esc(shortTitle(i.title))} <small>ТОП</small></button>`);
+  tops().forEach(i => h += `<button class="tab top ${r===tabId(i)?"on":""}" data-r="${tabId(i)}">${esc(i.emoji||"🔥")} ${esc(i.tab||shortTitle(i.title))} <small>ТОП</small></button>`);
   $("#tabs").innerHTML = h;
   $("#tabs").querySelector(".on")?.scrollIntoView({inline:"center",block:"nearest"});
 }
